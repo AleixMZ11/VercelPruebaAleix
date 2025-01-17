@@ -15,6 +15,8 @@ const CVPreview = ({ data }) => {
     doc.save("cv.pdf");
   };
 
+  
+
   return (
     <div className="p-4 bg-gray-100 shadow rounded">
       <h1 className="text-2xl font-bold">{data.name}</h1>
