@@ -14,9 +14,36 @@ const CVForm = ({ onUpdate }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onUpdate(formData);
+
+    try {
+      // Enviar los datos del formulario a la API
+      const response = await fetch("http://<tu_IP>/api.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al actualizar los datos");
+      }
+
+      const result = await response.json();
+
+      // Si la API devuelve un �xito, llamar a la funci�n onUpdate
+      if (result.success) {
+        onUpdate(formData); // Actualizar el estado en el componente padre (si es necesario)
+        alert("CV actualizado correctamente");
+      } else {
+        throw new Error(result.error || "Error desconocido");
+      }
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+      alert("Hubo un error al actualizar el CV. Por favor, int�ntalo de nuevo.");
+    }
   };
 
   return (
