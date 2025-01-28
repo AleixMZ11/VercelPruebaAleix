@@ -7,7 +7,7 @@ const CVPreview = () => {
 
     
     useEffect(() => {
-        fetch("http://images.mon-lab.shop/api.php")
+        fetch("http://172.17.22.135/api.php")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Error al obtener los datos del CV");
