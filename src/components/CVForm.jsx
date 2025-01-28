@@ -19,7 +19,7 @@ const CVForm = ({ onUpdate }) => {
 
     try {
       // Enviar los datos del formulario a la API
-      const response = await fetch("http://images.mon-lab.shop/api.php", {
+      const response = await fetch("http://172.17.22.135/api.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
