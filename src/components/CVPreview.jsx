@@ -5,9 +5,9 @@ const CVPreview = () => {
     // Estado para almacenar los datos del CV
     const [cvData, setCV] = useState(null);
 
-    // Efecto para obtener los datos del CV al montar el componente
+    
     useEffect(() => {
-        fetch("http://<tu_IP>/api.php") // Reemplaza <tu_IP> con la IP de tu Raspberry Pi
+        fetch("http://172.17.22.135/api.php")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Error al obtener los datos del CV");
