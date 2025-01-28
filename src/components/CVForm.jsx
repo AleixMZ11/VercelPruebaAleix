@@ -26,7 +26,9 @@ const CVForm = ({ onUpdate }) => {
         },
         body: JSON.stringify(formData),
       });
-
+      
+      console.log("Response status:", response.status);
+      console.log("Response body:", await response.text()); // o response.json() si esperas JSON
       if (!response.ok) {
         throw new Error("Error al actualizar los datos");
       }
